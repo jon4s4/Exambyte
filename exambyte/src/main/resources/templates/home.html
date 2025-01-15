@@ -47,7 +47,7 @@
         </p>
     </div>
     <div>
-        <table class="">
+        <table>
             <div>
                 <thead>
                     <tr>
@@ -55,6 +55,7 @@
                         <th>Bearbeitungszeitraum</th>
                         <th>Status</th>
                         <th>Test starten</th>
+                        <th>Quiz bearbeiten</th>
                         <th>Test löschen</th>
                     </tr>
                 </thead>
@@ -62,40 +63,45 @@
                 <tbody>
                     <tr th:each="quiz, index: ${alleQuizze}">
                         <td th:text="${index.count}"></td>
-                        <td th:text="${quiz.startTime != null && quiz.endTime != null ? quiz.startTime + ' - ' + quiz.endTime : 'Nicht festgelegt'}"></td>
+                        <td th:text="${quiz.startTime != null && quiz.endTime != null ? quiz.startTime + ' - ' + quiz.endTime : 'Noch nicht festgelegt'}"></td>
                         <td>
                             <div class="status">
+                                <!-- <p>noch nicht bearbeitet</p> -->
                                 <form th:action="@{/inspect/{quizID}(quizID=${quiz.getId()})}">
                                     <button class="button button3" type="submit">Test einsehen</button>
                                 </form>
                             </div>
                         </td>
                         <td>
-                            <div class="center">
-                                <form method="get" action="/quiz">
-                                    <button class="button button3">Test starten</button>
-                                </form>
-                            </div>
+                            <form method="get" action="/quiz">
+                                <button class="button button3">Test starten</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="get" th:action="@{/edit/{quizID}(quizID=${quiz.getId()})}">
+                                <button class="button button3">Test bearbeiten</button>
+                            </form>
                         </td>
                         <td>
                             <form method="post" action="/home/delete">
                                 <input type="hidden" name="id" th:value="${quiz.id}">
-                                <div class="center">
-                                    <button type="submit" class="icon">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </div>
+                                <button type="submit" class="icon">
+                                    <i class="fa fa-trash"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-    <div class="center">
+    <div>
         <form method="get" action="/form">
             <button class="button button3">Test erstellen</button>
         </form>
     </div>
+    <!--    <div th:if="${error != null}" class="error-message">-->
+    <!--        <p th:text="${error}"></p>-->
+    <!--    </div>TODO: remove Comment here-->
 
 </body>
 </html>

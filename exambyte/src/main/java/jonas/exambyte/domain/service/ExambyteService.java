@@ -8,7 +8,6 @@ import jonas.exambyte.application.QuizDto;
 import jonas.exambyte.domain.model.Aufgabe;
 import jonas.exambyte.domain.model.Aufgabentyp;
 import jonas.exambyte.domain.model.Quiz;
-import jonas.exambyte.domain.model.Zeitraum;
 
 @Service
 public class ExambyteService{
@@ -55,7 +54,8 @@ public class ExambyteService{
 
     public void saveQuiz(QuizDto quizDto) {
         Quiz quiz = new Quiz();
-        quiz.setZeitraum(new Zeitraum(quizDto.getZeitraum().getStartTime(), quizDto.getZeitraum().getEndTime()));
+        quiz.setStartTime(quizDto.getStartTime());
+        quiz.setEndTime(quizDto.getEndTime());
         List<Aufgabe> aufgaben = quizDto.getAufgaben()
         .stream().map(a -> new Aufgabe(a.frage(), a.aufgabentyp()))
         .toList();

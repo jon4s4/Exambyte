@@ -1,34 +1,13 @@
 package jonas.exambyte.domain.model;
 
-import java.time.LocalDateTime;
-
-import jakarta.validation.constraints.NotNull;
+import java.sql.Date;
 
 public class Zeitraum {
-    @NotNull
-    LocalDateTime startTime;
-    @NotNull
-    LocalDateTime endTime;
+    Date anfangsDatum;
+    Date endDatum;
 
-    public Zeitraum(LocalDateTime startTime, LocalDateTime endTime) {
-        this.startTime = startTime;
-        this.endTime = endTime;
+    public Zeitraum(Date anfangsDatum, Date endDatum) {
+        this.anfangsDatum = anfangsDatum;
+        this.endDatum = endDatum;
     }
-
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
-    }
-
 }

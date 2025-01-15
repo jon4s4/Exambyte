@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import jonas.exambyte.domain.model.Aufgabe;
 import jonas.exambyte.domain.model.Quiz;
-import jonas.exambyte.domain.model.Zeitraum;
 import jonas.exambyte.domain.service.QuizRepository;
 
 @Repository
@@ -35,13 +34,13 @@ public class QuizRepositoryImpl implements QuizRepository {
   public Quiz save(Quiz requestedQuiz) {
     List<jonas.exambyte.adapter.db.Aufgabe> aufgaben = requestedQuiz.getAlleAufgaben().stream().map(this::extractAufgaben).toList();
     jonas.exambyte.adapter.db.Quiz quizDB1 = new jonas.exambyte.adapter.db.Quiz(requestedQuiz.getId(), aufgaben,
-            requestedQuiz.getZeitraum().getStartTime(), requestedQuiz.getZeitraum().getEndTime());
+            requestedQuiz.getStartTime(), requestedQuiz.getEndTime());
     jonas.exambyte.adapter.db.Quiz saved = springDataExambyteRepository.save(quizDB1);
     return convertQuiz(saved);
   }
 
   private Quiz convertQuiz(jonas.exambyte.adapter.db.Quiz quiz1DB) {
-    Quiz result = new Quiz(quiz1DB.id(), new Zeitraum(quiz1DB.startTime(), quiz1DB.endTime()));
+    Quiz result = new Quiz(quiz1DB.id(), quiz1DB.startTime(), quiz1DB.endTime());
     quiz1DB.aufgaben().forEach(a -> result.addAufgabe(convertAufgabe(a)));
     
     return result;

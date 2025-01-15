@@ -1,5 +1,6 @@
 package jonas.exambyte.domain.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,16 +9,20 @@ public class Quiz {
 
     private List<Aufgabe> alleAufgaben = new ArrayList<>();
 
-    Zeitraum zeitraum;
-    
-    public Quiz(Long id, Zeitraum zeitraum) {
-        this.id = id;
-    }
-    
-    public Quiz(Zeitraum zeitraum) {
-        this.zeitraum = zeitraum;
-    }
+    private LocalDateTime startTime;
 
+    private LocalDateTime endTime;
+    
+
+    public Quiz(Long id, LocalDateTime startTime, LocalDateTime endTime) {
+        this.id = id;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+    public Quiz(LocalDateTime starTime, LocalDateTime endTime){
+        this.startTime = starTime;
+        this.endTime = endTime;
+    }
     public Quiz(Long id) {
         this.id = id;
     }
@@ -30,6 +35,12 @@ public class Quiz {
     public List<Aufgabe> getAlleAufgaben() {
         return alleAufgaben;
     }
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
 
     public void addAufgabe(Aufgabe aufgabe){
         alleAufgaben.add(aufgabe);
@@ -37,20 +48,14 @@ public class Quiz {
     public void setId(Long id) {
         this.id = id;
     }
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
     public void setAlleAufgabe(List<Aufgabe> aufgaben){
         this.alleAufgaben = aufgaben;
-    }
-
-    public void setAlleAufgaben(List<Aufgabe> alleAufgaben) {
-        this.alleAufgaben = alleAufgaben;
-    }
-
-    public Zeitraum getZeitraum() {
-        return zeitraum;
-    }
-
-    public void setZeitraum(Zeitraum zeitraum) {
-        this.zeitraum = zeitraum;
     }
     
 }
