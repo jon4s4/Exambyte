@@ -1,0 +1,137 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    display: inline;
+    padding: 600px
+  }
+  
+  thead, th {
+    background-color: aquamarine;
+    border: 1px solid #000000c5;
+    border-radius: 10px;
+    text-align: left;
+    padding: 4px;
+  }
+  
+  tbody tr:nth-child(odd) {
+    background-color: skyblue;
+  }
+
+  tbody tr:nth-child(even){
+    background-color: #ffffff;
+  }
+
+  tbody td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+
+  tbody tr:hover {
+    background-color: #d1e7ff;
+  }
+  body{
+    background-color: #000000d3;
+  }
+  .header{
+    display: flex;
+    justify-content: space-between;
+    background-color: skyblue;
+    border-radius: 10px;
+    border: 5px solid aquamarine;
+  }
+  .headline{
+    padding: 5;
+  }
+  .info-header{
+    display: flex;
+    justify-content: center;
+    font-size: large;
+    border-bottom:1px solid black;
+  }
+  .info-text{
+    background-color: skyblue;
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  .button {
+      border: none;
+      color: white;
+      padding: 2px 4px;
+      text-align: center;
+      text-decoration:none;
+      font-size: 18px;
+      transition-duration: 0.2s;
+      cursor: pointer;
+  }
+  .button1 {
+      background-color: #77dbfa;
+      color: #000000;
+      border: 1px solid #000000;
+      display: flex;
+  }
+  .button1:hover{
+      background-color: #ffffff00;
+      color: rgb(0, 0, 0);
+  }
+  .button2 {
+      background-color: aquamarine;
+      color: #000000;
+      border: 1px solid black;
+      display:inline-flex;
+  }
+  .button2:hover{
+      background-color: rgba(0, 0, 0, 0.774);
+      color: white;
+  }
+  .button3 {
+    background-color: aquamarine;
+    color: #000000;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+  }
+  .button3:hover{
+    background-color: rgba(0, 0, 0, 0.774);
+    color: white;
+  }
+  .button4{
+    background-color: rgba(17, 36, 143, 0.699);
+    color: #ffffff;
+    display: flex;
+  }
+  .button4:hover{
+    background-color: rgba(17, 36, 143, 0.699);
+    color:#000000;
+  }
+  .inspect{
+    background-color:#000000;
+  }
+  .inspect:hover{
+    background-color: aquamarine;
+    color: #000000;
+  }
+  .icon {
+    background-color: lightblue;
+    border: none;
+    border-radius: 15px;
+    padding: 13px;
+    cursor: pointer;
+    font-size: 30px;
+    display: inline-flex;
+    align-items: center;
+    transition-duration: 0.2s;
+}
+.icon:hover {
+    background-color: rgba(0, 0, 0, 0.774);
+    color: white;
+}
+.status{
+  display: flex;
+  justify-content: center;
+}
+.center{
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  quizzedb:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/quizze:/var/lib/postgresql/data
+    environment:
+      - "POSTGRES_DB=quizze"
+      - "POSTGRES_USER=user"
+      - "POSTGRES_PASSWORD=4"

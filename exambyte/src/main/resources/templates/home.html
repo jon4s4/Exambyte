@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After login</title>
+    <link rel="stylesheet" href="../static/css/styleHome.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="header">
+        <form method="get" action="/">
+            <button class="icon">
+                <i class="fa fa-home"></i>
+            </button>
+        </form>
+        <h1 class="headline">
+            Hier ist die Liste aller Quizze:
+        </h1>
+        <form method="get" action="/home">
+            <button class="icon">
+                <i class="fa fa-user"></i>
+            </button>
+        </form>
+    </div>
+
+    <div class="info-text">
+        <p> <b class="info-header">Informationen zu den Quizzen</b> <br>
+            Mit den Quizzen wollen wir sichergehen, dass nur diejenigen die Klausur mitschreiben, die sich ausreichend gut mit dem Stoff beschäftigt haben.
+                Sie sollen dabei auch üben, nachvollziehbare Freitextantworten zu formulieren.
+            
+            Es gibt genau <b>einen Testversuch.</b> Die Antworten können nach Beenden des Quiz bzw. nach Ende der Bearbeitungszeit nicht mehr verändert werden. 
+            Versehentlich beendete Test können nicht neu gestartet werden. Nach Ende der Bearbeitungszeit wird der letzte Speicherstand von allen angefangenen 
+            Tests automatisch abgegeben.
+            
+            Es gibt <b>keinerlei Toleranz</b> bei Verstößen gegen die gute wissenschaftliche Praxis, dazu gehört die Übernahme von Text oder Code aus Internetquellen 
+            oder von anderen Personen ohne Quellenangabe. Wenn Quellen (außerhalb des Kursmaterials) zitiert oder paraphrasiert werden, müssen diese angegeben werden.
+                Dies gilt insbesondere für generative KIs. <br>
+                <b>Verstöße dagegen führen zum sofortigen Ausschluss aus dem Zulassungsverfahren dieser Veranstaltung.</b> <br>
+            
+            Wenn Fragestellungen unklar sind, nutzen Sie bitte die Fragestunden, Übungen oder das Diskussionsforum. Für Probleme mit der Accessibility der Quizze,
+                melden Sie sich bitte unter propra@cs.hhu.de
+            
+            Die Ergebnisse des Quiz erhalten Sie in der Regel nach 1 Woche, wenn auch die manuelle Korrektur der Aufgaben abgeschlossen ist.
+        </p>
+    </div>
+    <div>
+        <table class="">
+            <div>
+                <thead>
+                    <tr>
+                        <th>Testnummer</th>
+                        <th>Bearbeitungszeitraum</th>
+                        <th>Status</th>
+                        <th>Test starten</th>
+                        <th>Test löschen</th>
+                    </tr>
+                </thead>
+            </div>
+                <tbody>
+                    <tr th:each="quiz, index: ${alleQuizze}">
+                        <td th:text="${index.count}"></td>
+                        <td th:text="${quiz.startTime != null && quiz.endTime != null ? quiz.startTime + ' - ' + quiz.endTime : 'Nicht festgelegt'}"></td>
+                        <td>
+                            <div class="status">
+                                <form th:action="@{/inspect/{quizID}(quizID=${quiz.getId()})}">
+                                    <button class="button button3" type="submit">Test einsehen</button>
+                                </form>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="center">
+                                <form method="get" action="/quiz">
+                                    <button class="button button3">Test starten</button>
+                                </form>
+                            </div>
+                        </td>
+                        <td>
+                            <form method="post" action="/home/delete">
+                                <input type="hidden" name="id" th:value="${quiz.id}">
+                                <div class="center">
+                                    <button type="submit" class="icon">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    <div class="center">
+        <form method="get" action="/form">
+            <button class="button button3">Test erstellen</button>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styleEdit.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Quiz bearbeiten</title>
+
+</head>
+<body>
+    <div class="header">
+        <h1>Quiz bearbeiten</h1>
+    </div>
+
+<div class="form">
+        <div class="zeitraum">
+            <form method="post" action="/form/details" th:object="${zeitraum}">
+                <label class="frage" for="startTime">Startdatum:</label>
+                <input type="datetime-local" id="startTime" name="startTime" th:field="*{startTime}" th:value="*{startTime}">
+                <span th:if="${#fields.hasErrors('startTime')}" th:errors="*{getStartTime()}">Frage Error</span>
+
+                <label class="frage" for="endTime">Enddatum:</label>
+                <input type="datetime-local" id="endTime" name="endTime" th:field="*{endTime}" th:value="*{endTime}">
+                <span th:if="${#fields.hasErrors('endTime')}" th:errors="*{getEndTime()}">Frage Error</span>
+                <br>
+            </div>
+                <div class="center">
+                    <button class="button" type="submit">Zeitraum speichern</button>
+                </div>
+            </form>
+        <form method="post" action="/form/add" th:object="${quiz}">
+            <label class="frage" for="frage">Frage:</label>
+            <input type="text" id="frage" name="currentAufgabe" th:field="*{currentAufgabe}">
+            <span th:if="${#fields.hasErrors('currentAufgabe')}" th:errors="*{currentAufgabe}">Frage Error</span>
+            <div class="center">
+                <div class="gap select">
+                    <select name="aufgabentyp">
+                        <option value="FREITEXT">Freitext</option>
+                        <option value="MULTIPLE_CHOICE">Multiple Choice</option>
+                    </select>
+                </div>
+                <button class="button1" type="submit">Aufgabe Hinzufügen</button>
+            </div>
+        <div class="buttons">
+            </form>
+            <form method="post" action="/form/submit">
+                <button class="button2" type="submit">Quiz erstellen</button>
+            </form>
+            <form method="post" action="/form/cancel">
+                <button class="button3" type="submit">Löschen</button>
+            </form>
+        </div>
+    <div class="header">
+        <h2>hier sind alle Aufgaben:</h2>
+    </div>
+    <ul>
+        <li th:each=" aufgabe: ${quiz.getAlleAufgaben()}" 
+        th:text="${aufgabe.frage}"></li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Erstes Quiz</h1>
+    <form method="post" action="/home">
+        <tr>
+            <th>Frage</th>
+            <th>Antwort</th> <br>
+        </tr>
+        <tr th:each=" aufgabe: ${aufgaben}">
+            <td th:text="${aufgabe.frage}"></td>
+            <td>
+                <input type="text" value="Antwort" />
+            </td> <br>
+        </tr>
+        <button type="submit">Test abgeben</button>
+    </form>
+</body>
+</html>

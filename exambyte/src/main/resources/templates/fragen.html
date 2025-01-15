@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styleEdit.css">
+    <title>Fragen bearbeiten</title>
+</head>
+<body>
+    <div>
+        <h1>Frage</h1>
+    </div>
+
+    <div class="">
+        <form method="post" th:action="@{/edit}" 
+        th:object="${aufgabe}">
+            <label for="frage">Neue Frage:</label>
+            <input type="text" id="frage" th:field="*{frage}">
+            <small class="error-message" 
+            th:if="${#fields.hasErrors('frage')}" 
+               th:errors="*{frage}"></small>
+    
+            <br><br>
+    
+            <button class="button1" type="submit">Frage Hinzufügen</button>
+            
+        </form>
+    </div>
+
+    <div class="button button4">
+        <form method="get" th:action="@{/edit/submit}">
+            <button type="submit">Quiz erstellen</button>
+        </form>
+    </div>
+
+</body>
+</html>

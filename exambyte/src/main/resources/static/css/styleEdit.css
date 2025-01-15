@@ -1,0 +1,125 @@
+body{
+  background-color: rgb(77, 77, 77);
+}
+input[type=text] {
+  width: 100%;
+  padding: 50px 50px;
+  margin: 8px 0;
+  border-radius: 10px;
+}
+input[type="datetime-local"] {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid aquamarine;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+select {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid aquamarine;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+span{
+  color: red;
+}
+.header{
+  display: flex;
+  justify-content: center;
+  background-color: skyblue;
+  border:5px solid aquamarine;
+  border-radius: 10px;
+}
+.form{
+  background-color: skyblue;
+  border-radius: 10px;
+}
+.button{
+  transition: 0.3s;
+  padding: 8px 18px;
+  border-radius: 10px;
+  background-color: teal;
+  color: white;
+}
+.button:hover{
+  opacity: 1;
+  background-color: black;
+  color: white;
+}
+.aufgabe{
+  background-color: blue;
+  color:white;
+}
+.aufgabe:hover{
+  background-color: rgb(55, 82, 255);
+  color: white;
+}
+.center{
+  display: flex;
+  justify-content: center;
+}
+.gap{
+  width: 500px;
+}
+.select{
+  font-size: 20px;
+  padding: 10px;
+}
+.right{
+  display: flex;
+  justify-content: right;
+}
+.left{
+  display: flex;
+  justify-content: left;
+}
+.frage{
+  font-size:x-large;
+  padding: 6px;
+  
+}
+.zeitraum{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.buttons{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.button1{
+  background-color: blue;
+  transition-duration: 0.2s;
+  padding: 5px;
+  font-size: large;
+}
+.button1:hover{
+  background-color: rgb(97, 139, 255);
+}
+.button2{
+  background-color: green;
+  transition-duration: 0.2s;
+  padding: 5px;
+  font-size: large;
+}
+.button2:hover{
+  background-color: rgb(79, 212, 79);
+  color: black;
+}
+.button3{
+  background-color: red;
+  transition-duration: 0.2s;
+  font-size: large;
+  padding: 5px;
+}
+.button3:hover{
+  background-color: rgb(255, 83, 83);
+  color: black;
+}
